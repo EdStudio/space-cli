@@ -83,7 +83,11 @@ def cmd_conv(cmd):
     userid1 = client.id
     userid2 = int(cmd[1]) 
     username1 = client.username
-    username2 = users.get_user(userid2, "id").username
+    try:
+        username2 = users.get_user(userid2, "id").username
+    except:
+        print("User not found")
+        return
     for message in myjson["messages"]:
         is_encrypted = message["is_encrypted"]
         msg_if_encrypted = "▢"
